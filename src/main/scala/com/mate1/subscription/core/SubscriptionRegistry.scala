@@ -1,15 +1,15 @@
-package com.mate1.subscription
+package com.mate1.subscription.core
 
 import scala.util.Try
 
-private[subscription] object SubscriptionRegistry {
+private[core] object SubscriptionRegistry {
 
   def apply(): SubscriptionRegistry = new SubscriptionRegistry
 
 }
 
 
-private[subscription] class SubscriptionRegistry {
+private[core] class SubscriptionRegistry {
 
   def updateUserSubscription(subscription: Subscription): Try[Subscription] = {
     //test if the subscription is valid:

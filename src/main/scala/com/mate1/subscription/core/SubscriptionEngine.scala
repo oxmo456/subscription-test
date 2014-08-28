@@ -1,4 +1,4 @@
-package com.mate1.subscription
+package com.mate1.subscription.core
 
 import scala.util.Try
 
