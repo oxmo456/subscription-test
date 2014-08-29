@@ -1,17 +1,17 @@
-package com.mate1.subscription.core
+package com.acme.subscription.core
 
 import scala.util.Try
 
-trait SubscriptionEngine[A] {
+trait SubscriptionAgent[A] {
 
-  private[this] val subscriptionRegistry = SubscriptionRegistry()
+  private[this] val userSubscriptionRegistry = UserSubscriptionRegistry()
 
   final def updateUserSubscription(userId: Long, data: A): Try[Subscription] = {
 
-    val userSubscriptions: List[Subscription] = subscriptionRegistry.retrieveSubscriptions(userId)
+    val userSubscriptions: List[Subscription] = userSubscriptionRegistry.retrieveUserSubscriptionsHistory(userId)
 
     processUserSubscriptionUpdate(userId, userSubscriptions, data)
-      .flatMap(subscriptionRegistry.updateUserSubscription(_))
+      .flatMap(userSubscriptionRegistry.updateUserSubscription(_))
 
     //what to do if the subscription update was processed by the engine but fail inside the registry ?
     //  - the engine should store each transaction
