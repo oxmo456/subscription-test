@@ -10,6 +10,10 @@ trait SubscriptionAgent[A] {
 
     val userSubscriptions: List[Subscription] = userSubscriptionRegistry.retrieveUserSubscriptionsHistory(userId)
 
+    //Should we always allow a subscription update
+    // - what if a user has a valid subscription created by an Itune Agent and, for some reasons the user is able to
+    // subscribe with an other Agent ?
+
     processUserSubscriptionUpdate(userId, userSubscriptions, data)
       .flatMap(userSubscriptionRegistry.updateUserSubscription(_))
 
