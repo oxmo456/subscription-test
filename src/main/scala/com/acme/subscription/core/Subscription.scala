@@ -1,6 +1,6 @@
 package com.acme.subscription.core
 
-import come.acme.permissions.Permission
+import com.acme.permissions.Permission
 
 /**
  * @param userId Each subscription is associated with a user
